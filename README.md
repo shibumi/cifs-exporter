@@ -3,6 +3,6 @@ SMB/CIFS Prometheus Exporter
 
 ## Todo
 
-- [ ] CIFS header
+- [x] CIFS header
 - [ ] SMBv1 support
 - [ ] SMBv2 support
