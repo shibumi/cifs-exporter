@@ -30,13 +30,16 @@ func main() {
 	log.Println(stats)
 	http.Handle(*metricsPath, promhttp.HandlerFor(registry, promhttp.HandlerOpts{}))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(`<html>
+		_, err := w.Write([]byte(`<html>
 			<head><title>CIFS Exporter</title></head>
 			<body>
 			<h1>CIFS Exporter</h1>
 			<p><a href='` + *metricsPath + `'>Metrics</a></p>
 			</body>
 			</html>`))
+		if err != nil {
+			log.Println(err)
+		}
 	})
 
 	registry.MustRegister(collector.NewCIFSCollector())
