@@ -48,5 +48,4 @@ func main() {
 	}
 	log.Printf("Providing metrics at %s%s", *listenAddr, *metricsPath)
 	log.Fatal(srv.Serve(listener))
-
 }
