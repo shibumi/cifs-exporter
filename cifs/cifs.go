@@ -8,7 +8,80 @@ import (
 )
 
 type ClientStats struct {
-	Header Header
+	Header   Header
+	SMB1List []*SMB1
+	SMB2List []*SMB2
+}
+
+type SMB1 struct {
+	Server      string
+	Share       string
+	SMB         uint64
+	OpLocks     uint64
+	Reads       uint64
+	ReadsBytes  uint64
+	Writes      uint64
+	WritesBytes uint64
+	Flushes     uint64
+	Locks       uint64
+	Hardlinks   uint64
+	Symlinks    uint64
+	Opens       uint64
+	Closes      uint64
+	Deletes     uint64
+	PosixOpens  uint64
+	PosixMkdirs uint64
+	Mkdirs      uint64
+	Rmdirs      uint64
+	Renames     uint64
+	T2Renames   uint64
+	FindFirst   uint64
+	FNext       uint64
+	FClose      uint64
+}
+
+type SMB2 struct {
+	Server                 string
+	Share                  string
+	SMB                    uint64
+	NegotiatesSent         uint64
+	NegotiatesFailed       uint64
+	SessionSetupsSent      uint64
+	SessionSetupsFailed    uint64
+	LogoffsSent            uint64
+	LogoffsFailed          uint64
+	TreeConnectsSent       uint64
+	TreeConnectsFailed     uint64
+	TreeDisconnectsSent    uint64
+	TreedisconnectsFailed  uint64
+	CreatesSent            uint64
+	CreatesFailed          uint64
+	ClosesSent             uint64
+	ClosesFailed           uint64
+	FlushesSent            uint64
+	FlushesFailed          uint64
+	ReadsSent              uint64
+	ReadsFailed            uint64
+	WritesSent             uint64
+	WritesFailed           uint64
+	LocksSent              uint64
+	LocksFailed            uint64
+	IOCTLsSent             uint64
+	IOCTLsFailed           uint64
+	CancelsSent            uint64
+	CancelsFailed          uint64
+	EchosSent              uint64
+	EchosFailed            uint64
+	QueryDirectoriesSent   uint64
+	QueryDirectoriesFailed uint64
+	ChangeNotifiesSent     uint64
+	ChangeNotifiesFailed   uint64
+	QueryInfosSent         uint64
+	QueryInfosFailed       uint64
+	SetInfosSent           uint64
+	SetInfosFailed         uint64
+	OpLockBreaksSent       uint64
+	OpLockBreaksFailed     uint64
 }
 
 type Header struct {
@@ -61,9 +134,20 @@ func (stats *ClientStats) parseHeader(line string) {
 func ParseClientStats(r io.Reader) (*ClientStats, error) {
 	stats := &ClientStats{}
 	scanner := bufio.NewScanner(r)
+	// parse Header
+	headerLen := 9
 	for scanner.Scan() {
+		if headerLen == 0 {
+			break
+		}
 		line := scanner.Text()
 		stats.parseHeader(line)
+		headerLen--
+	}
+	// parse SMB blocks
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Println(line)
 	}
 	return stats, nil
 }
