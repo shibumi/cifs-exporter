@@ -11,7 +11,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	//"github.com/prometheus/client_golang/prometheus"
 )
 
 var version, commit, date string
