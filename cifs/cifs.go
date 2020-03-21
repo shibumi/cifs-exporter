@@ -45,6 +45,10 @@ func (stats *ClientStats) parseHeader(line string) error {
 		if _, err := fmt.Sscanf(line, "Share (unique mount targets): %d", &stats.Header.Targets); err != nil {
 			return err
 		}
+	case strings.Contains(line, "SMB Request/Response Buffer:"):
+		if _, err := fmt.Sscanf(line, "SMB Request/Response Buffer: %d Pool size: %d", &stats.Header.SMBReq, &stats.Header.SMBBuf); err != nil {
+			return err
+		}
 	}
 	return nil
 }
