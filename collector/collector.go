@@ -2,6 +2,8 @@ package collector
 
 import (
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/shibumi/cifs-exporter/cifs"
+	"log"
 	"sync"
 )
 
@@ -29,5 +31,11 @@ func (c *CIFSCollector) Describe(ch chan<- *prometheus.Desc) {
 func (c *CIFSCollector) Collect(ch chan<- prometheus.Metric) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
+	stats, err := cifs.NewClientStats()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_unique_mount_targets"], prometheus.GaugeValue, float64(stats.Targets))
 
 }
