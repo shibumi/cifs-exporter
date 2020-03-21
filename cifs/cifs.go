@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"strings"
 )
 
 type ClientStats struct {
@@ -35,22 +34,28 @@ func NewClientStats() (*ClientStats, error) {
 	return ParseClientStats(f)
 }
 
-func (stats *ClientStats) parseHeader(line string) error {
-	switch {
-	case strings.Contains(line, "CIFS Session:"):
-		if _, err := fmt.Sscanf(line, "CIFS Session: %d", &stats.Header.CIFSSession); err != nil {
-			return err
-		}
-	case strings.Contains(line, "Share (unique mount targets):"):
-		if _, err := fmt.Sscanf(line, "Share (unique mount targets): %d", &stats.Header.Targets); err != nil {
-			return err
-		}
-	case strings.Contains(line, "SMB Request/Response Buffer:"):
-		if _, err := fmt.Sscanf(line, "SMB Request/Response Buffer: %d Pool size: %d", &stats.Header.SMBReq, &stats.Header.SMBBuf); err != nil {
-			return err
-		}
+func (stats *ClientStats) parseHeader(line string) {
+	if _, err := fmt.Sscanf(line, "CIFS Session: %d", &stats.Header.CIFSSession); err == nil {
+		return
 	}
-	return nil
+	if _, err := fmt.Sscanf(line, "Share (unique mount targets): %d", &stats.Header.Targets); err == nil {
+		return
+	}
+	if _, err := fmt.Sscanf(line, "SMB Request/Response Buffer: %d Pool size: %d", &stats.Header.SMBReq, &stats.Header.SMBBuf); err == nil {
+		return
+	}
+	if _, err := fmt.Sscanf(line, "SMB Small Req/Resp Buffer: %d Pool size: %d", &stats.Header.SMBSmallReq, &stats.Header.SMBSmallBuf); err == nil {
+		return
+	}
+	if _, err := fmt.Sscanf(line, "Operations (MIDs): %d", &stats.Header.Op); err == nil {
+		return
+	}
+	if _, err := fmt.Sscanf(line, "%d session %d share reconnects", &stats.Header.Session, &stats.Header.ShareReconnects); err == nil {
+		return
+	}
+	if _, err := fmt.Sscanf(line, "Total vfs operations: %d maximum at one time: %d", &stats.Header.MaxOp, &stats.Header.AtOnce); err == nil {
+		return
+	}
 }
 
 func ParseClientStats(r io.Reader) (*ClientStats, error) {
@@ -58,9 +63,7 @@ func ParseClientStats(r io.Reader) (*ClientStats, error) {
 	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if err := stats.parseHeader(line); err != nil {
-			return nil, err
-		}
+		stats.parseHeader(line)
 	}
 	return stats, nil
 }
