@@ -16,6 +16,7 @@ type CIFSCollector struct {
 func NewCIFSCollector() *CIFSCollector {
 	return &CIFSCollector{
 		metrics: map[string]*prometheus.Desc{
+			"cifs_total_cifs_sessions":        prometheus.NewDesc("cifs_total_cifs_sessions", "Total CIFS sessions", nil, nil),
 			"cifs_total_unique_mount_targets": prometheus.NewDesc("cifs_total_unique_mount_targets", "Total unique mount targets", nil, nil),
 		},
 	}
@@ -36,6 +37,7 @@ func (c *CIFSCollector) Collect(ch chan<- prometheus.Metric) {
 		log.Println(err)
 		return
 	}
-	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_unique_mount_targets"], prometheus.GaugeValue, float64(stats.Targets))
+	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_cifs_sessions"], prometheus.GaugeValue, float64(stats.Header.CIFSSession))
+	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_unique_mount_targets"], prometheus.GaugeValue, float64(stats.Header.Targets))
 
 }
