@@ -3,6 +3,19 @@ SMB/CIFS Prometheus Exporter for parsing and exporting statistics at /proc/fs/ci
 
 ## Installation
 
+You can either install the exporter via go or download the binary.
+For installing it via go, do:
+```
+$ go install https://github.com/shibumi/cifs-exporter
+```
+
+The pre-build binaries are available via Github releases.
+All binaries are signed with my GPG key with the following ID:
+
+```
+6DAF 7B80 8F9D F251 3962  0000 D214 61E3 DFE2 060D
+```
+
 ## Usage
 ```
 Usage of ./cifs-exporter:
