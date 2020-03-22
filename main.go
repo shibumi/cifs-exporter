@@ -16,7 +16,7 @@ import (
 var version, commit, date string
 
 func main() {
-	listenAddr := flag.String("web.listen-address", ":9812", "Address to listen on for web interface and telemetry.")
+	listenAddr := flag.String("web.listen-address", ":9965", "Address to listen on for web interface and telemetry.")
 	metricsPath := flag.String("web.telemetry-path", "/metrics", "A path under which to expose metrics.")
 	appVersion := flag.Bool("version", false, "Display version information")
 	flag.Parse()
