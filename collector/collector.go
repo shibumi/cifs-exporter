@@ -3,13 +3,13 @@ package collector
 import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/shibumi/cifs-exporter/cifs"
-	"log"
 	"sync"
 )
 
 type CIFSCollector struct {
 	metrics map[string]*prometheus.Desc
 	mutex   sync.Mutex
+	up      *prometheus.Desc
 }
 
 // NewCIFSCollector creates a CIFSCollector
@@ -28,6 +28,7 @@ func NewCIFSCollector() *CIFSCollector {
 			"cifs_total_max_op":               prometheus.NewDesc("cifs_total_max_op", "Total max op", nil, nil),
 			"cifs_total_at_once":              prometheus.NewDesc("cifs_total_at_once", "Total operations at once", nil, nil),
 		},
+		up: prometheus.NewDesc("cifs_up", "Boolean gauge of 1 if cifs shares are available, or 0 if not", nil, nil),
 	}
 }
 
@@ -43,9 +44,10 @@ func (c *CIFSCollector) Collect(ch chan<- prometheus.Metric) {
 	defer c.mutex.Unlock()
 	stats, err := cifs.NewClientStats()
 	if err != nil {
-		log.Println(err)
+		ch <- prometheus.MustNewConstMetric(c.up, prometheus.GaugeValue, float64(0))
 		return
 	}
+	ch <- prometheus.MustNewConstMetric(c.up, prometheus.GaugeValue, float64(1))
 	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_cifs_sessions"], prometheus.GaugeValue, float64(stats.Header.CIFSSession))
 	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_unique_mount_targets"], prometheus.GaugeValue, float64(stats.Header.Targets))
 	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_requests"], prometheus.GaugeValue, float64(stats.Header.SMBReq))
