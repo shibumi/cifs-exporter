@@ -1,0 +1,239 @@
+# HELP cifs_total_at_once Total operations at once
+# TYPE cifs_total_at_once gauge
+cifs_total_at_once 2
+# HELP cifs_total_buffer Total buffer
+# TYPE cifs_total_buffer gauge
+cifs_total_buffer 5
+# HELP cifs_total_cancels_failed Total cancels failed
+# TYPE cifs_total_cancels_failed gauge
+cifs_total_cancels_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_cancels_sent Total cancels sent
+# TYPE cifs_total_cancels_sent gauge
+cifs_total_cancels_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_change_notifies_failed Total change_notifies failed
+# TYPE cifs_total_change_notifies_failed gauge
+cifs_total_change_notifies_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_change_notifies_sent Total change_notifies sent
+# TYPE cifs_total_change_notifies_sent gauge
+cifs_total_change_notifies_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_cifs_sessions Total CIFS sessions
+# TYPE cifs_total_cifs_sessions gauge
+cifs_total_cifs_sessions 1
+# HELP cifs_total_closes Total closes
+# TYPE cifs_total_closes gauge
+cifs_total_closes{server="server1",share="\\share1"} 0
+cifs_total_closes{server="server3",share="\\share3"} 0
+# HELP cifs_total_closes_failed Total closes failed
+# TYPE cifs_total_closes_failed gauge
+cifs_total_closes_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_closes_sent Total closes sent
+# TYPE cifs_total_closes_sent gauge
+cifs_total_closes_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_creates_failed Total creates failed
+# TYPE cifs_total_creates_failed gauge
+cifs_total_creates_failed{server="server2",share="\\share2"} 2
+# HELP cifs_total_creates_sent Total creates sent
+# TYPE cifs_total_creates_sent gauge
+cifs_total_creates_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_deletes Total deletes
+# TYPE cifs_total_deletes gauge
+cifs_total_deletes{server="server1",share="\\share1"} 0
+cifs_total_deletes{server="server3",share="\\share3"} 0
+# HELP cifs_total_echos_failed Total echos failed
+# TYPE cifs_total_echos_failed gauge
+cifs_total_echos_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_echos_sent Total echos sent
+# TYPE cifs_total_echos_sent gauge
+cifs_total_echos_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_find_close Total find close
+# TYPE cifs_total_find_close gauge
+cifs_total_find_close{server="server1",share="\\share1"} 0
+cifs_total_find_close{server="server3",share="\\share3"} 0
+# HELP cifs_total_find_first Total find first
+# TYPE cifs_total_find_first gauge
+cifs_total_find_first{server="server1",share="\\share1"} 1
+cifs_total_find_first{server="server3",share="\\share3"} 1
+# HELP cifs_total_find_next Total find next
+# TYPE cifs_total_find_next gauge
+cifs_total_find_next{server="server1",share="\\share1"} 0
+cifs_total_find_next{server="server3",share="\\share3"} 0
+# HELP cifs_total_flushes Total flushes
+# TYPE cifs_total_flushes gauge
+cifs_total_flushes{server="server1",share="\\share1"} 0
+cifs_total_flushes{server="server3",share="\\share3"} 0
+# HELP cifs_total_flushes_failed Total flushes failed
+# TYPE cifs_total_flushes_failed gauge
+cifs_total_flushes_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_flushes_sent Total flushes sent
+# TYPE cifs_total_flushes_sent gauge
+cifs_total_flushes_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_hardlinks Total hardlinks
+# TYPE cifs_total_hardlinks gauge
+cifs_total_hardlinks{server="server1",share="\\share1"} 0
+cifs_total_hardlinks{server="server3",share="\\share3"} 0
+# HELP cifs_total_ioctls_failed Total ioctls failed
+# TYPE cifs_total_ioctls_failed gauge
+cifs_total_ioctls_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_ioctls_sent Total ioctls sent
+# TYPE cifs_total_ioctls_sent gauge
+cifs_total_ioctls_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_locks Total locks
+# TYPE cifs_total_locks gauge
+cifs_total_locks{server="server1",share="\\share1"} 0
+cifs_total_locks{server="server3",share="\\share3"} 0
+# HELP cifs_total_locks_failed Total locks failed
+# TYPE cifs_total_locks_failed gauge
+cifs_total_locks_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_locks_sent Total locks sent
+# TYPE cifs_total_locks_sent gauge
+cifs_total_locks_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_logoffs_failed Total logoffs failed
+# TYPE cifs_total_logoffs_failed gauge
+cifs_total_logoffs_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_logoffs_sent Total logoffs sent
+# TYPE cifs_total_logoffs_sent gauge
+cifs_total_logoffs_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_max_op Total max op
+# TYPE cifs_total_max_op gauge
+cifs_total_max_op 16
+# HELP cifs_total_mkdirs Total mkdirs
+# TYPE cifs_total_mkdirs gauge
+cifs_total_mkdirs{server="server1",share="\\share1"} 0
+cifs_total_mkdirs{server="server3",share="\\share3"} 0
+# HELP cifs_total_negotiates_failed Total negotiates failed
+# TYPE cifs_total_negotiates_failed gauge
+cifs_total_negotiates_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_negotiates_sent Total negotiates sent
+# TYPE cifs_total_negotiates_sent gauge
+cifs_total_negotiates_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_op Total op
+# TYPE cifs_total_op gauge
+cifs_total_op 0
+# HELP cifs_total_opens Total opens
+# TYPE cifs_total_opens gauge
+cifs_total_opens{server="server1",share="\\share1"} 0
+cifs_total_opens{server="server3",share="\\share3"} 0
+# HELP cifs_total_oplocks Total oplock breaks
+# TYPE cifs_total_oplocks gauge
+cifs_total_oplocks{server="server1",share="\\share1"} 0
+cifs_total_oplocks{server="server3",share="\\share3"} 0
+# HELP cifs_total_oplocks_failed Total oplocks breaks failed
+# TYPE cifs_total_oplocks_failed gauge
+cifs_total_oplocks_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_oplocks_sent Total oplocks breaks sent
+# TYPE cifs_total_oplocks_sent gauge
+cifs_total_oplocks_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_posix_mkdirs Total posix mkdirs
+# TYPE cifs_total_posix_mkdirs gauge
+cifs_total_posix_mkdirs{server="server1",share="\\share1"} 0
+cifs_total_posix_mkdirs{server="server3",share="\\share3"} 0
+# HELP cifs_total_posix_opens Total posix opens
+# TYPE cifs_total_posix_opens gauge
+cifs_total_posix_opens{server="server1",share="\\share1"} 0
+cifs_total_posix_opens{server="server3",share="\\share3"} 0
+# HELP cifs_total_query_directories_failed Total query_directories failed
+# TYPE cifs_total_query_directories_failed gauge
+cifs_total_query_directories_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_query_directories_sent Total query_directories sent
+# TYPE cifs_total_query_directories_sent gauge
+cifs_total_query_directories_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_query_infos_failed Total query_infos failed
+# TYPE cifs_total_query_infos_failed gauge
+cifs_total_query_infos_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_query_infos_sent Total query_infos sent
+# TYPE cifs_total_query_infos_sent gauge
+cifs_total_query_infos_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_read_bytes Total read bytes
+# TYPE cifs_total_read_bytes gauge
+cifs_total_read_bytes{server="server1",share="\\share1"} 0
+cifs_total_read_bytes{server="server3",share="\\share3"} 0
+# HELP cifs_total_reads Total reads
+# TYPE cifs_total_reads gauge
+cifs_total_reads{server="server1",share="\\share1"} 0
+cifs_total_reads{server="server3",share="\\share3"} 0
+# HELP cifs_total_reads_failed Total reads failed
+# TYPE cifs_total_reads_failed gauge
+cifs_total_reads_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_reads_sent Total reads sent
+# TYPE cifs_total_reads_sent gauge
+cifs_total_reads_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_renames Total renames
+# TYPE cifs_total_renames gauge
+cifs_total_renames{server="server1",share="\\share1"} 0
+cifs_total_renames{server="server3",share="\\share3"} 0
+# HELP cifs_total_requests Total requests
+# TYPE cifs_total_requests gauge
+cifs_total_requests 1
+# HELP cifs_total_rmdirs Total rmdirs
+# TYPE cifs_total_rmdirs gauge
+cifs_total_rmdirs{server="server1",share="\\share1"} 0
+cifs_total_rmdirs{server="server3",share="\\share3"} 0
+# HELP cifs_total_session Total session
+# TYPE cifs_total_session gauge
+cifs_total_session 0
+# HELP cifs_total_session_setups_failed Total session setups fauled
+# TYPE cifs_total_session_setups_failed gauge
+cifs_total_session_setups_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_session_setups_sent Total session setups sent
+# TYPE cifs_total_session_setups_sent gauge
+cifs_total_session_setups_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_set_infos_failed Total set_infos failed
+# TYPE cifs_total_set_infos_failed gauge
+cifs_total_set_infos_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_set_infos_sent Total set_infos sent
+# TYPE cifs_total_set_infos_sent gauge
+cifs_total_set_infos_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_share_reconnects Total share reconnects
+# TYPE cifs_total_share_reconnects gauge
+cifs_total_share_reconnects 0
+# HELP cifs_total_small_buffer Total small buffer
+# TYPE cifs_total_small_buffer gauge
+cifs_total_small_buffer 30
+# HELP cifs_total_small_requests Total small requests
+# TYPE cifs_total_small_requests gauge
+cifs_total_small_requests 1
+# HELP cifs_total_smb Total SMB
+# TYPE cifs_total_smb gauge
+cifs_total_smb{server="server1",share="\\share1"} 9
+cifs_total_smb{server="server2",share="\\share2"} 20
+cifs_total_smb{server="server3",share="\\share3"} 9
+# HELP cifs_total_symlinks Total symlinks
+# TYPE cifs_total_symlinks gauge
+cifs_total_symlinks{server="server1",share="\\share1"} 0
+cifs_total_symlinks{server="server3",share="\\share3"} 0
+# HELP cifs_total_t2_renames Total T2 renames
+# TYPE cifs_total_t2_renames gauge
+cifs_total_t2_renames{server="server1",share="\\share1"} 0
+cifs_total_t2_renames{server="server3",share="\\share3"} 0
+# HELP cifs_total_tree_connects_failed Total tree_connects failed
+# TYPE cifs_total_tree_connects_failed gauge
+cifs_total_tree_connects_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_tree_connects_sent Total tree_connects sent
+# TYPE cifs_total_tree_connects_sent gauge
+cifs_total_tree_connects_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_tree_disconnects_failed Total tree_disconnects failed
+# TYPE cifs_total_tree_disconnects_failed gauge
+cifs_total_tree_disconnects_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_tree_disconnects_sent Total tree_disconnects sent
+# TYPE cifs_total_tree_disconnects_sent gauge
+cifs_total_tree_disconnects_sent{server="server2",share="\\share2"} 0
+# HELP cifs_total_unique_mount_targets Total unique mount targets
+# TYPE cifs_total_unique_mount_targets gauge
+cifs_total_unique_mount_targets 2
+# HELP cifs_total_write_bytes Total write bytes
+# TYPE cifs_total_write_bytes gauge
+cifs_total_write_bytes{server="server1",share="\\share1"} 0
+cifs_total_write_bytes{server="server3",share="\\share3"} 0
+# HELP cifs_total_writes Total writes
+# TYPE cifs_total_writes gauge
+cifs_total_writes{server="server1",share="\\share1"} 0
+cifs_total_writes{server="server3",share="\\share3"} 0
+# HELP cifs_total_writes_failed Total writes failed
+# TYPE cifs_total_writes_failed gauge
+cifs_total_writes_failed{server="server2",share="\\share2"} 0
+# HELP cifs_total_writes_sent Total writes sent
+# TYPE cifs_total_writes_sent gauge
+cifs_total_writes_sent{server="server2",share="\\share2"} 0
+# HELP cifs_up Boolean gauge of 1 if cifs shares are available, or 0 if not
+# TYPE cifs_up gauge
+cifs_up 1

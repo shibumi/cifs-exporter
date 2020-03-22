@@ -1,0 +1,55 @@
+Resources in use
+CIFS Session: 1
+Share (unique mount targets): 2
+SMB Request/Response Buffer: 1 Pool size: 5
+SMB Small Req/Resp Buffer: 1 Pool size: 30
+Operations (MIDs): 0
+
+0 session 0 share reconnects
+Total vfs operations: 16 maximum at one time: 2
+
+1) \\server1\share1
+SMBs: 9 Oplocks breaks: 0
+Reads:  0 Bytes: 0
+Writes: 0 Bytes: 0
+Flushes: 0
+Locks: 0 HardLinks: 0 Symlinks: 0
+Opens: 0 Closes: 0 Deletes: 0
+Posix Opens: 0 Posix Mkdirs: 0
+Mkdirs: 0 Rmdirs: 0
+Renames: 0 T2 Renames 0
+FindFirst: 1 FNext 0 FClose 0
+
+2) \\server2\share2
+SMBs: 20
+Negotiates: 0 sent 0 failed
+SessionSetups: 0 sent 0 failed
+Logoffs: 0 sent 0 failed
+TreeConnects: 0 sent 0 failed
+TreeDisconnects: 0 sent 0 failed
+Creates: 0 sent 2 failed
+Closes: 0 sent 0 failed
+Flushes: 0 sent 0 failed
+Reads: 0 sent 0 failed
+Writes: 0 sent 0 failed
+Locks: 0 sent 0 failed
+IOCTLs: 0 sent 0 failed
+Cancels: 0 sent 0 failed
+Echos: 0 sent 0 failed
+QueryDirectories: 0 sent 0 failed
+ChangeNotifies: 0 sent 0 failed
+QueryInfos: 0 sent 0 failed
+SetInfos: 0 sent 0 failed
+OplockBreaks: 0 sent 0 failed
+
+1) \\server\share3
+SMBs: 9 Oplocks breaks: 0
+Reads:  0 Bytes: 0
+Writes: 0 Bytes: 0
+Flushes: 0
+Locks: 99 HardLinks: 0 Symlinks: 0
+Opens: 0 Closes: 0 Deletes: 0
+Posix Opens: 0 Posix Mkdirs: 0
+Mkdirs: 0 Rmdirs: 0
+Renames: 0 T2 Renames 0
+FindFirst: 1 FNext 0 FClose 0
