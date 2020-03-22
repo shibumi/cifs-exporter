@@ -57,4 +57,34 @@ func (c *CIFSCollector) Collect(ch chan<- prometheus.Metric) {
 	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_share_reconnects"], prometheus.GaugeValue, float64(stats.Header.ShareReconnects))
 	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_max_op"], prometheus.GaugeValue, float64(stats.Header.MaxOp))
 	ch <- prometheus.MustNewConstMetric(c.metrics["cifs_total_at_once"], prometheus.GaugeValue, float64(stats.Header.AtOnce))
+
+	// len(SMB1/2 metrics) = 22
+	// len(SMB3 metrics) = 39
+	for _, block := range stats.Blocks {
+		if len(block.Metrics) == 22 {
+			l := prometheus.Labels{"server": block.Server, "share": block.Share}
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_smb", "Total SMB", nil, l), prometheus.GaugeValue, float64(block.Metrics[0]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_oplocks", "Total oplock breaks", nil, l), prometheus.GaugeValue, float64(block.Metrics[1]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_reads", "Total reads", nil, l), prometheus.GaugeValue, float64(block.Metrics[2]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_read_bytes", "Total read bytes", nil, l), prometheus.GaugeValue, float64(block.Metrics[3]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_writes", "Total writes", nil, l), prometheus.GaugeValue, float64(block.Metrics[4]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_write_bytes", "Total write bytes", nil, l), prometheus.GaugeValue, float64(block.Metrics[5]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_flushes", "Total flushes", nil, l), prometheus.GaugeValue, float64(block.Metrics[6]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_locks", "Total locks", nil, l), prometheus.GaugeValue, float64(block.Metrics[7]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_hardlinks", "Total hardlinks", nil, l), prometheus.GaugeValue, float64(block.Metrics[8]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_symlinks", "Total symlinks", nil, l), prometheus.GaugeValue, float64(block.Metrics[9]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_opens", "Total opens", nil, l), prometheus.GaugeValue, float64(block.Metrics[10]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_closes", "Total closes", nil, l), prometheus.GaugeValue, float64(block.Metrics[11]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_deletes", "Total deletes", nil, l), prometheus.GaugeValue, float64(block.Metrics[12]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_posix_opens", "Total posix opens", nil, l), prometheus.GaugeValue, float64(block.Metrics[13]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_posix_mkdirs", "Total posix mkdirs", nil, l), prometheus.GaugeValue, float64(block.Metrics[14]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_mkdirs", "Total mkdirs", nil, l), prometheus.GaugeValue, float64(block.Metrics[15]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_rmdirs", "Total rmdirs", nil, l), prometheus.GaugeValue, float64(block.Metrics[16]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_renames", "Total renames", nil, l), prometheus.GaugeValue, float64(block.Metrics[17]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_t2_renames", "Total T2 renames", nil, l), prometheus.GaugeValue, float64(block.Metrics[18]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_find_first", "Total find first", nil, l), prometheus.GaugeValue, float64(block.Metrics[19]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_find_next", "Total find next", nil, l), prometheus.GaugeValue, float64(block.Metrics[20]))
+			ch <- prometheus.MustNewConstMetric(prometheus.NewDesc("cifs_total_find_close", "Total find close", nil, l), prometheus.GaugeValue, float64(block.Metrics[21]))
+		}
+	}
 }
