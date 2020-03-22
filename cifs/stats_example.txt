@@ -41,3 +41,15 @@ ChangeNotifies: 0 sent 0 failed
 QueryInfos: 0 sent 0 failed
 SetInfos: 0 sent 0 failed
 OplockBreaks: 0 sent 0 failed
+
+1) \\server3\share3
+SMBs: 9 Oplocks breaks: 0
+Reads:  0 Bytes: 0
+Writes: 0 Bytes: 0
+Flushes: 0
+Locks: 0 HardLinks: 0 Symlinks: 0
+Opens: 0 Closes: 0 Deletes: 0
+Posix Opens: 0 Posix Mkdirs: 0
+Mkdirs: 0 Rmdirs: 0
+Renames: 0 T2 Renames 0
+FindFirst: 1 FNext 0 FClose 0
