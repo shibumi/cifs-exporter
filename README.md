@@ -19,4 +19,4 @@ Usage of ./cifs-exporter:
 
 ## Samples
 
-Have a look in the `examples` directory
+Have a look on the `examples` directory
