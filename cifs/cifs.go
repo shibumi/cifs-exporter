@@ -46,7 +46,7 @@ var re = regexp.MustCompile(`(?m)(?:(?:(?P<SMBID>\d+)\) \\\\(?P<Server>[A-Za-z1-
 
 // NewClientStats opens the cifs stats file and returns our parsed CIFS client statistics.
 func NewClientStats() (*ClientStats, error) {
-	f, err := os.Open("cifs/stats_example.txt")
+	f, err := os.Open("/proc/fs/cifs/Stats")
 	if err != nil {
 		return nil, err
 	}
