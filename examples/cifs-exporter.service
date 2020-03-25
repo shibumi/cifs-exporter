@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus CIFS/SMB Client statistics exporter
+
+[Service]
+User=cifs_exporter
+ExecStart=/usr/local/bin/cifs-exporter
+
+#Todo: Add hardening options for systemd service files here.
+
+[Install]
+WantedBy=multi-user.target
