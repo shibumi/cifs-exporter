@@ -1,0 +1,18 @@
+project_name: cifs-exporter
+builds:
+  - ldflags:
+      - "-s -w"
+      - "-extldflags=-zrelro"
+      - "-extldflags=-znow"
+      - "-X main.version={{.Version}}"
+      - "-X main.commit={{.FullCommit}}"
+      - "-X main.date={{.CommitDate}}"
+    env:
+      - "CGO_ENABLED=0"
+      - "GO111MODULE=on"
+      - "GOFLAGS=-mod=readonly -trimpath"
+    goos:
+      - linux
+    goarch:
+      - amd64
+    main: .

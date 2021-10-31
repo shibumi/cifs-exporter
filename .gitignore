@@ -16,3 +16,6 @@
 #
 # IDE directory
 .idea/
+
+# ignore goreleaser artifacts
+dist
