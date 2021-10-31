@@ -4,7 +4,7 @@ COPY . /app
 RUN go build
 
 # Release
-FROM scratch AS release
+FROM gcr.io/distroless/base AS release
 COPY --from=build /app/cifs-exporter /usr/local/bin/cifs-exporter
 USER 9999:9999
 EXPOSE 9695
