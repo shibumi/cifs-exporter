@@ -16,3 +16,11 @@ builds:
     goarch:
       - amd64
     main: .
+source:
+  enabled: true
+signs:
+  - cmd: cosign
+    signature: "${artifact}.sig"
+    certificate: "${artifact}.pem"
+    args: ["sign-blob", "--oidc-issuer=https://token.actions.githubusercontent.com", "--output-signature=${signature}", "--output-certificate=${certificate}", "${artifact}"]
+    artifacts: all
